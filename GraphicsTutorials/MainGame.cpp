@@ -43,10 +43,36 @@ void MainGame::initSystems() {
 }
 
 void MainGame::processInput() {
-	
+	SDL_Event evt;
+	//procesa evento 
+	while(SDL_PollEvent(&evt)){
+		switch(evt.type){
+
+			case SDL_QUIT:
+			_gameState=GameState::EXIT;
+			break;
+			case SDL_MOUSEMOTION:
+				cout<<evt.motion.x<<evt.motion.y<<endl;
+				break;
+
+		}
+
+
+	}
+
 }
 
 void MainGame::update() {
+
+	while(_gameState!=GameState::EXIT){
+
+		processInput();
+		draw();
+
+
+
+
+	}
 	
 }
 
